@@ -109,6 +109,23 @@ def train_all_models(
         }
         detailed_evaluations[key] = eval_result
 
+        # Sanitize internal random generator state for cross-platform/cross-NumPy compatibility
+        regressor = pipeline.named_steps.get("regressor")
+        if regressor is not None:
+            if hasattr(regressor, "_rng"):
+                try:
+                    delattr(regressor, "_rng")
+                except AttributeError:
+                    pass
+            if hasattr(regressor, "estimators_"):
+                for est in regressor.estimators_:
+                    if hasattr(est, "__iter__"):
+                        for sub_est in est:
+                            if hasattr(sub_est, "random_state") and not isinstance(sub_est.random_state, int):
+                                sub_est.random_state = RANDOM_SEED
+                    elif hasattr(est, "random_state") and not isinstance(est.random_state, int):
+                        est.random_state = RANDOM_SEED
+
         # Persist fitted pipeline
         joblib.dump(pipeline, cfg["path"])
 

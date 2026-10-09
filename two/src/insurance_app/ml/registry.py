@@ -75,12 +75,19 @@ class ModelRegistry:
 
         model_path = self.MODEL_PATHS[model_key]
         if not model_path.exists():
-            raise FileNotFoundError(
-                f"Model artifact not found at '{model_path}'. "
-                f"Please train the models by running 'python scripts/train_models.py'."
-            )
+            from insurance_app.config import DATA_PATH
+            from insurance_app.ml.train import train_all_models
+            train_all_models(DATA_PATH, self.models_dir)
 
-        model = joblib.load(model_path)
+        try:
+            model = joblib.load(model_path)
+        except Exception:
+            # Fallback for cross-Python / cross-NumPy binary incompatibility on cloud platforms
+            from insurance_app.config import DATA_PATH
+            from insurance_app.ml.train import train_all_models
+            train_all_models(DATA_PATH, self.models_dir)
+            model = joblib.load(model_path)
+
         self._cache[model_key] = model
         return model
 
