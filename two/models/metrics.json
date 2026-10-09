@@ -1,0 +1,65 @@
+{
+  "linear_regression": {
+    "name": "Linear Regression",
+    "metrics": {
+      "mae": 4181.19,
+      "rmse": 5796.28,
+      "r2": 0.7836
+    },
+    "feature_importance": {
+      "age": 3614.98,
+      "bmi": 2036.23,
+      "children": 516.89,
+      "sex: female": 9.3,
+      "sex: male": -9.3,
+      "smoker: no": -11825.56,
+      "smoker: yes": 11825.56,
+      "region: northeast": 459.59,
+      "region: northwest": 88.91,
+      "region: southeast": -198.28,
+      "region: southwest": -350.21
+    }
+  },
+  "random_forest": {
+    "name": "Random Forest Regressor",
+    "metrics": {
+      "mae": 2552.04,
+      "rmse": 4590.28,
+      "r2": 0.8643
+    },
+    "feature_importance": {
+      "age": 0.1339,
+      "bmi": 0.2132,
+      "children": 0.0194,
+      "sex: female": 0.004,
+      "sex: male": 0.0039,
+      "smoker: no": 0.4575,
+      "smoker: yes": 0.1511,
+      "region: northeast": 0.0052,
+      "region: northwest": 0.0042,
+      "region: southeast": 0.0044,
+      "region: southwest": 0.0031
+    }
+  },
+  "gradient_boosting": {
+    "name": "Gradient Boosting Regressor",
+    "metrics": {
+      "mae": 2401.61,
+      "rmse": 4325.64,
+      "r2": 0.8795
+    },
+    "feature_importance": {
+      "age": 0.1169,
+      "bmi": 0.1908,
+      "children": 0.0102,
+      "sex: female": 0.0004,
+      "sex: male": 0.0003,
+      "smoker: no": 0.3001,
+      "smoker: yes": 0.3763,
+      "region: northeast": 0.0024,
+      "region: northwest": 0.0013,
+      "region: southeast": 0.0002,
+      "region: southwest": 0.001
+    }
+  }
+}
