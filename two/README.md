@@ -23,16 +23,40 @@ The solution incorporates:
 
 ---
 
-## 🚀 Quick Start Guide
+## 🚀 Quick Start & Installation Guide
 
-### 1. Virtual Environment & Dependencies
+### 1. Installation by Operating System
+
+#### 🐧 Linux (Ubuntu / Debian / Fedora)
 ```bash
-# Navigate to the project root
-cd /media/ashvin/code/GitRepo/college-proj/two
-
-# Activate virtual environment
+python3 -m venv .venv
 source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -e .
 ```
+
+#### 🪟 Windows (PowerShell or Command Prompt)
+```powershell
+# In PowerShell:
+py -3.12 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+# (Or in CMD: .\.venv\Scripts\activate.bat)
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+#### 🍎 macOS (Apple Silicon / Intel)
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install --upgrade pip
+pip install -r requirements.txt
+pip install -e .
+```
+
+---
 
 ### 2. Check Environment Diagnostics
 ```bash
@@ -59,7 +83,7 @@ Open your browser at: `http://localhost:8501`
 
 ## 📂 Repository Structure
 ```
-two/
+medical_insurance_cost_prediction_and_analytics/
 ├── app.py                      # Streamlit main entry point
 ├── pages/                      # Multi-page dashboard modules
 │   ├── 1_Overview.py           # Module A: Exploratory Data Analysis & Quality Audit

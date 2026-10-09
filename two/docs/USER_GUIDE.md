@@ -36,9 +36,5 @@ Use the **left-hand sidebar** to switch between modules:
   - *10 Years Older*
 - Inspect absolute dollar differences ($\Delta$) and relative percentage changes ($\% \Delta$).
 
-### Module E: C Engine Dual Comparison (`5_C_Comparison.py`)
-- Simultaneously submit a profile to both the Python Scikit-Learn pipeline and the low-level C linear algebra engine.
-- Inspect divergent outputs, model architectures, and compilation instructions.
-
-### Module F: About & Proforma (`6_About.py`)
+### Module E: About & Proforma (`5_About.py`)
 - Review academic project objectives, departmental information, methodology, and citations.

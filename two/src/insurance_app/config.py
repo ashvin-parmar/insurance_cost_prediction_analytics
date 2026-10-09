@@ -8,7 +8,7 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
-# Base project root (two levels up from this file: src/insurance_app/ -> two/)
+# Base project root (two levels up from this file: src/insurance_app/ -> repository root)
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
 
 # Data Paths

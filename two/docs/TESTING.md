@@ -17,7 +17,6 @@ The testing strategy validates software engineering robustness, numerical precis
 | | `test_validate_profile_out_of_bounds_warning` | Verifies warning flags for inputs exceeding observed data limits. |
 | | `test_validate_profile_invalid_age` | Rejects negative or extreme ages with descriptive ValueError. |
 | | `test_validate_profile_invalid_category` | Rejects non-domain categories (e.g., smoker='occasionally'). |
-| | `test_c_feature_vector_mapping` | Strictly verifies exact 12-dimensional vector format for C engine. |
 | `tests/test_data_validation.py` | `test_validate_clean_dataset` | Validates clean synthetic dataset and report generation. |
 | | `test_validate_invalid_dataset` | Detects missing columns, null values, and negative numbers. |
 | | `test_duplicate_detection` | Flags duplicate rows while preserving raw data integrity. |
@@ -34,8 +33,6 @@ The testing strategy validates software engineering robustness, numerical precis
 | | `test_prediction_service_execution` | Tests prediction execution via service layer. |
 | `tests/test_scenarios.py` | `test_scenario_comparison_delta` | Verifies absolute and percentage delta calculations. |
 | | `test_scenario_comparison_identical_profiles` | Verifies zero delta when profiles match. |
-| `tests/test_c_adapter.py` | `test_c_adapter_evaluation_with_real_files` | Verifies reading `model.csv` and `insurance_min_max.csv`. |
-| | `test_c_adapter_missing_files_graceful_handling` | Confirms non-crashing behavior when C files are absent. |
 
 ---
 

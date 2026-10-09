@@ -1,39 +1,79 @@
-# Developer & Setup Guide
+# Developer & Cross-Platform Installation Guide
 
-## Prerequisites
-- **Python:** 3.10, 3.11, or 3.12 (Python 3.11/3.12 recommended)
-- **Git**
-- **C Compiler (Optional):** GCC / Clang (for compiling the C inference CLI if desired)
+This guide covers step-by-step installation, dependency configuration, diagnostics, and execution instructions for **Windows**, **Linux**, and **macOS**.
 
 ---
 
-## 1. Local Environment Setup
+## 💻 System Prerequisites
 
-### Linux / macOS
+| Component | Minimum Requirement | Recommended | Notes |
+| :--- | :--- | :--- | :--- |
+| **Python** | Python 3.10+ | Python 3.11 or 3.12 | Ensure Python is added to system PATH |
+| **Pip** | 23.0+ | Latest | Bundled with modern Python distributions |
+| **Git** | 2.25+ | Latest | For cloning and version control |
+| **RAM** | 2 GB | 4 GB+ | Lightweight regression models |
+| **Disk Space** | 200 MB | 500 MB | Includes packages, dataset & artifacts |
+
+---
+
+## 🛠️ Step-by-Step Installation
+
+### 1. Windows (Command Prompt or PowerShell)
+
+#### Prerequisites on Windows:
+- Download Python from [python.org](https://www.python.org/downloads/).
+- **Important:** During installation, check the box: `[x] Add python.exe to PATH`.
+
+#### Setup Commands:
+```powershell
+# 1. Open PowerShell or Command Prompt and clone / navigate to repository
+cd path\to\medical_insurance_cost_prediction_and_analytics
+
+# 2. Create a virtual environment (using Python launcher)
+py -3.12 -m venv .venv
+# (Or if using standard python command: python -m venv .venv)
+
+# 3. Activate the virtual environment
+# In PowerShell:
+.\.venv\Scripts\Activate.ps1
+# (Note: If script execution is restricted in PowerShell, run:
+# Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser)
+
+# Or in classic Command Prompt (cmd.exe):
+.\.venv\Scripts\activate.bat
+
+# 4. Upgrade pip and install dependencies
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+---
+
+### 2. Linux (Ubuntu / Debian / Fedora / Arch)
+
+#### Prerequisites on Linux:
 ```bash
-# Navigate to the project directory
-cd /media/ashvin/code/GitRepo/college-proj/two
+# Ubuntu / Debian:
+sudo apt update
+sudo apt install python3 python3-venv python3-pip git -y
 
-# Create and activate virtual environment
+# Fedora:
+sudo dnf install python3 python3-pip git -y
+```
+
+#### Setup Commands:
+```bash
+# 1. Navigate to repository root
+cd /path/to/medical_insurance_cost_prediction_and_analytics
+
+# 2. Create virtual environment
 python3 -m venv .venv
+
+# 3. Activate virtual environment
 source .venv/bin/activate
 
-# Install dependencies
-python -m pip install --upgrade pip
-python -m pip install -r requirements.txt
-python -m pip install -e .
-```
-
-### Windows (PowerShell)
-```powershell
-# Navigate to the project directory
-Set-Location two
-
-# Create and activate virtual environment
-py -3.11 -m venv .venv
-.\.venv\Scripts\Activate.ps1
-
-# Install dependencies
+# 4. Upgrade pip and install project dependencies
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 python -m pip install -e .
@@ -41,37 +81,85 @@ python -m pip install -e .
 
 ---
 
-## 2. Environment Diagnostics
+### 3. macOS (Apple Silicon M1/M2/M3 & Intel)
 
-Verify that your Python runtime, dependencies, dataset, and artifacts are properly recognized:
+#### Prerequisites on macOS:
+- Ensure Command Line Tools or Homebrew is installed:
+```bash
+# If Homebrew is installed:
+brew install python@3.12 git
+```
+
+#### Setup Commands:
+```bash
+# 1. Navigate to repository root
+cd /path/to/medical_insurance_cost_prediction_and_analytics
+
+# 2. Create virtual environment
+python3 -m venv .venv
+
+# 3. Activate virtual environment
+source .venv/bin/activate
+
+# 4. Upgrade pip and install project dependencies
+python -m pip install --upgrade pip
+python -m pip install -r requirements.txt
+python -m pip install -e .
+```
+
+---
+
+## 🔍 Verification & Diagnostics
+
+Once installed and activated on any operating system, verify all dependencies and dataset files:
+
 ```bash
 python scripts/check_environment.py
 ```
-
----
-
-## 3. Running Automated Tests
-
-Run the test suite using pytest:
-```bash
-python -m pytest -q
+**Expected Output:**
+```
+============================================================
+Medical Insurance Application - Pure Python Diagnostics
+============================================================
+--- 1. Python Runtime ---
+Detected Python: 3.12.x
+  [OK] Supported Python release.
+--- 2. Required Packages ---
+  [OK] streamlit, pandas, numpy, sklearn, plotly, joblib, pytest
+--- 3. Dataset Availability ---
+  [OK] Dataset located at: .../data/insurance.csv
+--- 4. Machine Learning Artifacts ---
+  [OK] Linear Regression, Random Forest, Gradient Boosting
+============================================================
+System fully operational.
 ```
 
 ---
 
-## 4. Retraining Machine Learning Models
+## 🧪 Automated Testing
 
-To re-run the ML training pipeline and regenerate all models and metrics:
+Execute the comprehensive 21-test pytest suite:
+```bash
+pytest -v
+```
+All unit tests, validation assertions, and scenario tests will pass across Windows, Linux, and macOS.
+
+---
+
+## 🤖 Re-training Machine Learning Pipelines
+
+To re-fit all three regression algorithms (Linear Regression, Random Forest, Gradient Boosting) and generate fresh serialized `.joblib` models and JSON metrics:
 ```bash
 python scripts/train_models.py
 ```
 
 ---
 
-## 5. Launching the Streamlit Presentation Dashboard
+## 🚀 Launching the Interactive Web Dashboard
 
-To start the interactive presentation UI:
+To launch the multi-page Streamlit application:
 ```bash
 python -m streamlit run app.py
 ```
-This starts the local web server at `http://localhost:8501`.
+Open your web browser at:
+`http://localhost:8501`

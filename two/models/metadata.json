@@ -1,6 +1,6 @@
 {
   "project": "Medical Insurance Cost Prediction",
-  "training_timestamp": "2026-10-09T19:21:04.339689+00:00",
+  "training_timestamp": "2026-10-09T21:54:28.004116+00:00",
   "random_seed": 42,
   "test_size": 0.2,
   "total_samples": 1338,
