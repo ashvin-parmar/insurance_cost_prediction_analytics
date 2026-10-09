@@ -1,4 +1,10 @@
-"""Page 5: About the Project, Academic Proforma, and References."""
+import sys
+from pathlib import Path
+
+# Ensure src/ is on sys.path for direct execution / cloud platforms
+src_path = str(Path(__file__).resolve().parent.parent / "src")
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
 
 import streamlit as st
 

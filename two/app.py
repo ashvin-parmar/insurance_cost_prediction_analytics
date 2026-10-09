@@ -3,6 +3,15 @@
 Academic Deliverable: BE IV Year E&TC, Session 2026-27, Group No. 11, IET DAVV.
 """
 
+import os
+import sys
+from pathlib import Path
+
+# Ensure src/ is on sys.path for direct cloud execution (e.g., Streamlit Community Cloud)
+src_path = str(Path(__file__).resolve().parent / "src")
+if src_path not in sys.path:
+    sys.path.insert(0, src_path)
+
 import streamlit as st
 
 st.set_page_config(
