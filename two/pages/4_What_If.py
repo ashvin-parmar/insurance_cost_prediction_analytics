@@ -34,32 +34,25 @@ render_disclaimer()
 
 scenario_svc = ScenarioService()
 
-# Session state initialization for presets
-if "base_age" not in st.session_state:
-    st.session_state.base_age = 40
-if "base_sex" not in st.session_state:
-    st.session_state.base_sex = "male"
-if "base_bmi" not in st.session_state:
-    st.session_state.base_bmi = 32.5
-if "base_children" not in st.session_state:
-    st.session_state.base_children = 1
-if "base_smoker" not in st.session_state:
-    st.session_state.base_smoker = "yes"
-if "base_region" not in st.session_state:
-    st.session_state.base_region = "southeast"
+# Default profile values
+DEFAULTS = {
+    "b_age": 40,
+    "b_sex": "male",
+    "b_bmi": 32.5,
+    "b_children": 1,
+    "b_smoker": "yes",
+    "b_region": "southeast",
+    "a_age": 40,
+    "a_sex": "male",
+    "a_bmi": 26.0,
+    "a_children": 1,
+    "a_smoker": "no",
+    "a_region": "southeast",
+}
 
-if "alt_age" not in st.session_state:
-    st.session_state.alt_age = 40
-if "alt_sex" not in st.session_state:
-    st.session_state.alt_sex = "male"
-if "alt_bmi" not in st.session_state:
-    st.session_state.alt_bmi = 26.0
-if "alt_children" not in st.session_state:
-    st.session_state.alt_children = 1
-if "alt_smoker" not in st.session_state:
-    st.session_state.alt_smoker = "no"
-if "alt_region" not in st.session_state:
-    st.session_state.alt_region = "southeast"
+for k, v in DEFAULTS.items():
+    if k not in st.session_state:
+        st.session_state[k] = v
 
 # One-Click Scenario Presets
 st.subheader("⚡ Quick Scenario Presets")
@@ -67,29 +60,29 @@ preset_cols = st.columns(4)
 
 with preset_cols[0]:
     if st.button("🚭 Stop Smoking Scenario", use_container_width=True):
-        st.session_state.base_smoker = "yes"
-        st.session_state.alt_smoker = "no"
+        st.session_state["b_smoker"] = "yes"
+        st.session_state["a_smoker"] = "no"
         st.rerun()
 
 with preset_cols[1]:
     if st.button("⚖️ Reduce BMI to Normal", use_container_width=True):
-        st.session_state.base_bmi = 33.0
-        st.session_state.alt_bmi = 24.5
+        st.session_state["b_bmi"] = 33.0
+        st.session_state["a_bmi"] = 24.5
         st.rerun()
 
 with preset_cols[2]:
     if st.button("🎂 10 Years Older", use_container_width=True):
-        st.session_state.alt_age = min(st.session_state.base_age + 10, 64)
+        st.session_state["a_age"] = min(int(st.session_state["b_age"]) + 10, 64)
         st.rerun()
 
 with preset_cols[3]:
     if st.button("🔄 Copy Base to Alt", use_container_width=True):
-        st.session_state.alt_age = st.session_state.base_age
-        st.session_state.alt_sex = st.session_state.base_sex
-        st.session_state.alt_bmi = st.session_state.base_bmi
-        st.session_state.alt_children = st.session_state.base_children
-        st.session_state.alt_smoker = st.session_state.base_smoker
-        st.session_state.alt_region = st.session_state.base_region
+        st.session_state["a_age"] = st.session_state["b_age"]
+        st.session_state["a_sex"] = st.session_state["b_sex"]
+        st.session_state["a_bmi"] = st.session_state["b_bmi"]
+        st.session_state["a_children"] = st.session_state["b_children"]
+        st.session_state["a_smoker"] = st.session_state["b_smoker"]
+        st.session_state["a_region"] = st.session_state["b_region"]
         st.rerun()
 
 st.markdown("---")
@@ -111,21 +104,21 @@ col_base, col_alt = st.columns(2)
 
 with col_base:
     st.subheader("🔵 Baseline Profile")
-    b_age = st.slider("Age (Baseline)", 1, 100, st.session_state.base_age, key="b_age_input")
-    b_sex = st.selectbox("Sex (Baseline)", SEX_CATEGORIES, index=SEX_CATEGORIES.index(st.session_state.base_sex), key="b_sex_input")
-    b_bmi = st.number_input("BMI (Baseline)", 10.0, 70.0, float(st.session_state.base_bmi), step=0.1, key="b_bmi_input")
-    b_children = st.number_input("Children (Baseline)", 0, 10, int(st.session_state.base_children), step=1, key="b_ch_input")
-    b_smoker = st.selectbox("Smoker (Baseline)", SMOKER_CATEGORIES, index=SMOKER_CATEGORIES.index(st.session_state.base_smoker), key="b_sm_input")
-    b_region = st.selectbox("Region (Baseline)", REGIONS, index=REGIONS.index(st.session_state.base_region), key="b_rg_input")
+    b_age = st.slider("Age (Baseline)", 1, 100, key="b_age")
+    b_sex = st.selectbox("Sex (Baseline)", SEX_CATEGORIES, key="b_sex")
+    b_bmi = st.number_input("BMI (Baseline)", 10.0, 70.0, step=0.1, key="b_bmi")
+    b_children = st.number_input("Children (Baseline)", 0, 10, step=1, key="b_children")
+    b_smoker = st.selectbox("Smoker (Baseline)", SMOKER_CATEGORIES, key="b_smoker")
+    b_region = st.selectbox("Region (Baseline)", REGIONS, key="b_region")
 
 with col_alt:
     st.subheader("🟢 Alternative Profile")
-    a_age = st.slider("Age (Alternative)", 1, 100, st.session_state.alt_age, key="a_age_input")
-    a_sex = st.selectbox("Sex (Alternative)", SEX_CATEGORIES, index=SEX_CATEGORIES.index(st.session_state.alt_sex), key="a_sex_input")
-    a_bmi = st.number_input("BMI (Alternative)", 10.0, 70.0, float(st.session_state.alt_bmi), step=0.1, key="a_bmi_input")
-    a_children = st.number_input("Children (Alternative)", 0, 10, int(st.session_state.alt_children), step=1, key="a_ch_input")
-    a_smoker = st.selectbox("Smoker (Alternative)", SMOKER_CATEGORIES, index=SMOKER_CATEGORIES.index(st.session_state.alt_smoker), key="a_sm_input")
-    a_region = st.selectbox("Region (Alternative)", REGIONS, index=REGIONS.index(st.session_state.alt_region), key="a_rg_input")
+    a_age = st.slider("Age (Alternative)", 1, 100, key="a_age")
+    a_sex = st.selectbox("Sex (Alternative)", SEX_CATEGORIES, key="a_sex")
+    a_bmi = st.number_input("BMI (Alternative)", 10.0, 70.0, step=0.1, key="a_bmi")
+    a_children = st.number_input("Children (Alternative)", 0, 10, step=1, key="a_children")
+    a_smoker = st.selectbox("Smoker (Alternative)", SMOKER_CATEGORIES, key="a_smoker")
+    a_region = st.selectbox("Region (Alternative)", REGIONS, key="a_region")
 
 # Run Comparison
 try:
