@@ -13,7 +13,7 @@ from insurance_app.ui.styling import apply_custom_css
 
 apply_custom_css()
 
-st.title("ℹ️ Module E: About the Project & Academic Proforma")
+st.title("ℹ️ Module F: About the Project & Academic Proforma")
 st.caption("Project Documentation, Academic Proforma-I, and Methodology Overview.")
 
 render_disclaimer()

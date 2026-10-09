@@ -123,11 +123,18 @@ st.markdown("---")
 
 # 6. Key Empirical Insights
 st.subheader("6. Key Analytical Findings")
-st.markdown(r"""
-> 💡 **Finding 1 (Smoking Status):** Regular tobacco smoking is the single highest driver of annual medical charges. Smokers average **$32,050**, compared to **$8,434** for non-smokers (~3.8x increase).  
-> 💡 **Finding 2 (BMI Non-Linear Threshold):** BMI shows a severe non-linear threshold effect. Individuals with $\text{BMI} \ge 30$ (obese) who smoke experience exponential healthcare cost spikes exceeding **$40,000**.  
-> 💡 **Finding 3 (Age Correlation):** Age exhibits a steady positive linear slope with medical charges ($r \approx 0.30$), adding approximately **$250–$300** in billed charges per additional year of life.
-""")
+st.info(
+    "💡 **Finding 1 (Smoking Status):** Regular tobacco smoking is the single highest driver of annual medical charges. "
+    "Smokers average **USD 32,050**, compared to **USD 8,434** for non-smokers (~3.8x increase)."
+)
+st.warning(
+    "💡 **Finding 2 (BMI Non-Linear Threshold):** BMI shows a severe non-linear threshold effect. "
+    "Individuals with BMI ≥ 30 (obese category) who smoke experience exponential healthcare cost spikes exceeding **USD 40,000**."
+)
+st.success(
+    "💡 **Finding 3 (Age Correlation):** Age exhibits a steady positive linear slope with medical charges "
+    "(Pearson correlation r ≈ 0.30), adding approximately **USD 250 – USD 300** in billed charges per additional year of life."
+)
 
 st.markdown("---")
 

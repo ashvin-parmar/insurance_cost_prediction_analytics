@@ -69,12 +69,13 @@ st.markdown("Use the **sidebar on the left** to navigate through each phase of t
 m1, m2 = st.columns(2)
 with m1:
     st.markdown("""
-    * **[1. Overview & Data Analytics](pages/1_Overview.py):** Comprehensive exploratory data analysis (EDA), charge distributions, correlation heatmaps, and data validation reports.
-    * **[2. Interactive Prediction](pages/2_Predict.py):** Enter individual patient profiles (age, BMI, smoker status, dependents) to generate instant cost estimates.
+    * **1. Overview & Data Analytics:** Comprehensive exploratory data analysis (EDA), charge distributions, correlation heatmaps, and data validation reports.
+    * **2. Interactive Prediction:** Enter individual patient profiles (age, BMI, smoker status, dependents) to generate instant cost estimates.
+    * **3. Model Insights & Comparison:** Compare Linear Regression, Random Forest, and Gradient Boosting on MAE, RMSE, and $R^2$ with residual plots and feature importance.
     """)
 with m2:
     st.markdown("""
-    * **[3. Model Insights & Comparison](pages/3_Model_Insights.py):** Compare Linear Regression, Random Forest, and Gradient Boosting on MAE, RMSE, and $R^2$ with residual plots and feature importance.
-    * **[4. What-If Comparison Simulator](pages/4_What_If.py):** Simulate hypothetical scenarios (e.g. impact of quitting smoking or BMI changes) with delta cost breakdowns.
-    * **[5. About & Academic Proforma](pages/5_About.py):** College project objectives, methodology, viva preparation, and citations.
+    * **4. What-If Comparison Simulator:** Simulate hypothetical scenarios (e.g. impact of quitting smoking or BMI changes) with delta cost breakdowns.
+    * **5. Documentation & Tool Guide:** Interactive in-app reader for all technical project guides, setup instructions, and downloadable Viva PDF guide.
+    * **6. About & Academic Proforma:** College project objectives, methodology, viva preparation, and institutional attribution.
     """)

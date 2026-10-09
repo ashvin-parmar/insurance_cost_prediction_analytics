@@ -36,5 +36,10 @@ Use the **left-hand sidebar** to switch between modules:
   - *10 Years Older*
 - Inspect absolute dollar differences ($\Delta$) and relative percentage changes ($\% \Delta$).
 
-### Module E: About & Proforma (`5_About.py`)
+### Module E: Project Documentation & Tool Operations (`5_Docs.py`)
+- Browse all technical documents directly inside the UI (`USER_GUIDE.md`, `DEVELOPER_GUIDE.md`, `ARCHITECTURE.md`, `DATASET.md`, `ML_METHODOLOGY.md`, `TESTING.md`, `PROJECT_REPORT.md`, `VIVA_QUESTIONS.md`).
+- Download Markdown documentation and the full academic **Viva Voce PDF Guide**.
+- Detailed operational walkthrough of each interactive tool in the system.
+
+### Module F: About & Proforma (`6_About.py`)
 - Review academic project objectives, departmental information, methodology, and citations.

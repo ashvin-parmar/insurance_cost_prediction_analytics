@@ -90,7 +90,8 @@ medical_insurance_cost_prediction_and_analytics/
 │   ├── 2_Predict.py            # Module B: Interactive Single-Profile Prediction Form
 │   ├── 3_Model_Insights.py     # Module C: Multi-Model Evaluation & Residual Plots
 │   ├── 4_What_If.py            # Module D: Lifestyle What-If Scenario Simulator
-│   └── 5_About.py              # Module E: Academic Proforma & Project Attribution
+│   ├── 5_Docs.py               # Module E: Project Documentation & Tool Operations
+│   └── 6_About.py              # Module F: Academic Proforma & Project Attribution
 ├── src/insurance_app/          # Core modular application package
 │   ├── config.py               # Cross-platform path management (pathlib)
 │   ├── features/schema.py      # Feature contract, dataclasses, and boundary rules
