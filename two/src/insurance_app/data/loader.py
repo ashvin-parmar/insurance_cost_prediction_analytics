@@ -6,10 +6,12 @@ from pathlib import Path
 from typing import Optional, Union
 
 import pandas as pd
+import streamlit as st
 
 from insurance_app.config import DATA_PATH
 
 
+@st.cache_data(show_spinner=False)
 def load_dataset(path: Optional[Union[str, Path]] = None) -> pd.DataFrame:
     """Loads the medical insurance CSV dataset from disk.
 
